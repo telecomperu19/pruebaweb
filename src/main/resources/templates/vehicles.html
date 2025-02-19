@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vehículos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #336699;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            padding: 20px;
+        }
+        .vehicle-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .vehicle-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            animation: slideIn 1s ease-in-out;
+        }
+        .vehicle-card h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #336699;
+        }
+        .vehicle-card p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+        footer {
+            background-color: #336699;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista de Vehículos</h1>
+    </header>
+    <main>
+        <div class="vehicle-list">
+            <div th:each="vehicle : ${vehicles}" class="vehicle-card">
+                <h2 th:text="${vehicle.brand} + ' ' + ${vehicle.model}">Toyota Corolla</h2>
+                <p><strong>Precio:</strong> <span th:text="${vehicle.price}">$20,000</span></p>
+                <p><strong>Tipo:</strong> <span th:text="${vehicle.type}">Sedán</span></p>
+                <p><strong>Color:</strong> <span th:text="${vehicle.color}">Blanco</span></p>
+                <p><strong>Número de Asientos:</strong> <span th:text="${vehicle.seats}">5</span></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Lista de Vehículos. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
